@@ -3,15 +3,16 @@
 import React, { useState } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { Heart, ShoppingCart, Bell, User, Search, ChevronDown } from "lucide-react";
+import { Heart, ShoppingCart, Bell, User, Search, ChevronDown, LogOut } from "lucide-react";
+import { authClient } from "@/lib/auth-client";
 
-interface NavbarProps {
-  isLoggedIn?: boolean;
-}
-
-export default function Navbar({ isLoggedIn = false }: NavbarProps) {
+export default function Navbar() {
   const pathname = usePathname();
   const [isAboutOpen, setIsAboutOpen] = useState(false);
+  const [isAccountOpen, setIsAccountOpen] = useState(false);
+  
+  const { data: session } = authClient.useSession();
+  const user = session?.user;
 
   const navLinks = [
     { name: "Home", href: "/" },
@@ -27,6 +28,10 @@ export default function Navbar({ isLoggedIn = false }: NavbarProps) {
     { name: "Terms & Conditions", href: "/terms" },
     { name: "Report", href: "/report" },
   ];
+
+  const handleLogout = async () => {
+    await authClient.signOut();
+  };
 
   return (
     <nav className="sticky top-0 z-[50] w-full border-b border-neutral-200 bg-white px-8 py-5 flex items-center justify-between shadow-sm">
@@ -92,7 +97,7 @@ export default function Navbar({ isLoggedIn = false }: NavbarProps) {
         </div>
 
         <div className="flex items-center gap-3">
-          {isLoggedIn ? (
+          {user ? (
             <div className="flex items-center gap-2">
               <button className="relative flex h-10 w-10 items-center justify-center rounded-full text-neutral-700 transition-colors hover:bg-neutral-50 hover:text-neutral-950">
                 <Heart className="w-5 h-5" strokeWidth={2.2} />
@@ -103,9 +108,44 @@ export default function Navbar({ isLoggedIn = false }: NavbarProps) {
               <button className="relative flex h-10 w-10 items-center justify-center rounded-full text-neutral-700 transition-colors hover:bg-neutral-50 hover:text-neutral-950">
                 <Bell className="w-5 h-5" strokeWidth={2.2} />
               </button>
-              <button className="relative flex h-10 w-10 items-center justify-center rounded-full text-neutral-700 transition-colors hover:bg-neutral-50 hover:text-neutral-950">
-                <User className="w-5 h-5" strokeWidth={2.2} />
-              </button>
+              
+              <div 
+                className="relative"
+                onMouseEnter={() => setIsAccountOpen(true)}
+                onMouseLeave={() => setIsAccountOpen(false)}
+              >
+                <button className="relative flex h-10 w-10 items-center justify-center rounded-full border border-neutral-200 bg-neutral-50 overflow-hidden text-neutral-700 transition-colors hover:bg-neutral-100 hover:text-neutral-950 focus:outline-none">
+                  {user.image ? (
+                    <img src={user.image} alt={user.name} className="h-full w-full object-cover" />
+                  ) : (
+                    <User className="w-5 h-5" strokeWidth={2.2} />
+                  )}
+                </button>
+
+                {isAccountOpen && (
+                  <div className="absolute top-full right-0 z-[60] w-64 origin-top-right rounded-xl border border-neutral-100 bg-white p-2 shadow-xl ring-1 ring-black/5 animate-in fade-in slide-in-from-top-1 duration-200">
+                    <div className="px-4 py-3 border-b border-neutral-50">
+                      <p className="text-xs font-bold text-neutral-950 truncate">{user.name}</p>
+                      <p className="text-[11px] font-medium text-neutral-400 truncate mt-0.5">{user.email}</p>
+                    </div>
+                    <div className="mt-1.5 space-y-0.5">
+                      <Link
+                        href={`/dashboard/${user.role}`}
+                        className="block rounded-lg px-4 py-2 text-xs font-semibold text-neutral-600 transition-colors hover:bg-neutral-50 hover:text-neutral-950"
+                      >
+                       Dashboard
+                      </Link>
+                      <button
+                        onClick={handleLogout}
+                        className="w-full flex items-center gap-2 rounded-lg px-4 py-2 text-xs font-bold text-rose-600 transition-colors hover:bg-rose-50/50 text-left"
+                      >
+                        <LogOut size={14} />
+                        Sign Out
+                      </button>
+                    </div>
+                  </div>
+                )}
+              </div>
             </div>
           ) : (
             <div className="flex items-center gap-2">
@@ -116,7 +156,7 @@ export default function Navbar({ isLoggedIn = false }: NavbarProps) {
                 Sign In
               </Link>
               <Link 
-                href="/register" 
+                href="/signup" 
                 className="rounded-full bg-neutral-950 px-6 py-2.5 text-xs font-bold text-white transition-all shadow-md hover:bg-neutral-800 hover:shadow-lg active:scale-95"
               >
                 Get Started

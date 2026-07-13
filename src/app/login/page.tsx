@@ -6,6 +6,7 @@ import { Eye, EyeOff, ArrowRight } from "lucide-react";
 import { toast } from "react-toastify";
 import { signIn } from "@/lib/auth-client";
 
+
 export default function LoginPage() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -13,7 +14,6 @@ export default function LoginPage() {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-
     if (!email || !password) {
       toast.error("Please fill in all fields");
       return;
