@@ -213,7 +213,7 @@ export default function MyProfile({ user, totalOrders = 0 }: MyProfileProps) {
           </div>
 
          
-          <div className="relative overflow-hidden rounded-2xl h-36 bg-gradient-to-br from-neutral-900 via-neutral-800 to-neutral-950 p-5 flex flex-col justify-between shadow-md group">
+          <div className={`relative overflow-hidden rounded-2xl h-36 bg-gradient-to-br from-neutral-900 via-neutral-800 to-neutral-950 p-5 flex flex-col justify-between shadow-md group ${user.role=='admin'?'hidden':'flex'}`}>
             <div className="absolute -right-6 -bottom-6 w-24 h-24 bg-white/5 rounded-full blur-xl group-hover:scale-125 transition-transform duration-500" />
             
             <span className="self-start bg-neutral-100/10 text-white text-[9px] font-bold uppercase tracking-widest px-2.5 py-1 rounded-full border border-white/10 backdrop-blur-xs">

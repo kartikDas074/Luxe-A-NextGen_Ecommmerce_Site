@@ -2,7 +2,7 @@
 
 import React from 'react';
 
-// --- Props Types Definition from MongoDB Structure ---
+
 export interface ShopDashboardProps {
   shopData: {
     _id: { $oid: string };
@@ -35,14 +35,13 @@ export default function Company({ shopData }: ShopDashboardProps) {
   return (
     <div className="max-w-6xl mx-auto p-6 bg-gray-50 min-h-screen text-gray-800 antialiased">
       
-      {/* Header Row */}
+      
       <div className="flex flex-col sm:flex-row justify-between sm:items-center gap-4 mb-6">
         <div>
           <h1 className="text-2xl font-bold tracking-tight text-gray-900">My Shop</h1>
           <p className="text-sm text-gray-500">View your shop profile, branding, and business information.</p>
         </div>
         
-        {/* Condition restricted Edit button */}
         <button 
           disabled={isPending}
           className={`flex items-center gap-1.5 px-4 py-2 text-xs font-semibold rounded-lg border shadow-sm transition-all ${
@@ -55,9 +54,9 @@ export default function Company({ shopData }: ShopDashboardProps) {
         </button>
       </div>
 
-      {/* Main Branding Card */}
+      
       <div className="bg-white rounded-2xl shadow-sm border border-gray-100 overflow-hidden mb-6">
-        {/* Banner Frame */}
+   
         <div className="h-48 md:h-60 w-full bg-gray-200 relative">
           {shopData.shopBanner ? (
             <img 
@@ -70,7 +69,6 @@ export default function Company({ shopData }: ShopDashboardProps) {
           )}
         </div>
 
-        {/* Branding Meta Segment */}
         <div className="px-6 pb-6 relative">
           <div className="flex flex-col sm:flex-row items-center sm:items-end gap-4 -mt-12 mb-5">
             <div className="w-24 h-24 rounded-full border-4 border-white bg-white shadow overflow-hidden flex items-center justify-center">
@@ -100,7 +98,7 @@ export default function Company({ shopData }: ShopDashboardProps) {
             </div>
           </div>
 
-          {/* Shop Description Segment */}
+     
           <div className="border-t pt-4">
             <h4 className="text-[10px] font-bold text-gray-400 uppercase tracking-wider mb-1.5">Shop Description</h4>
             <p className="text-sm text-gray-600 leading-relaxed max-w-3xl">
@@ -110,7 +108,6 @@ export default function Company({ shopData }: ShopDashboardProps) {
         </div>
       </div>
 
-      {/* Performance Matrix Row (Mock Metrics Matching Image) */}
       <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 mb-6">
         {[
           { label: 'Total Products', val: isPending ? '0' : '142', growth: isPending ? '0.0%' : '+12.5%', up: true },
@@ -128,13 +125,12 @@ export default function Company({ shopData }: ShopDashboardProps) {
         ))}
       </div>
 
-      {/* Bottom Grid: Info Cards + Action Panel */}
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
         
-        {/* Left Side: Forms Profile Details */}
+      
         <div className="lg:col-span-2 space-y-6">
           
-          {/* Business Core Info */}
+       
           <div className="bg-white p-5 rounded-xl shadow-sm border border-gray-100">
             <h3 className="text-sm font-bold text-gray-900 flex items-center gap-2 mb-4 border-b pb-2">
               📋 Business Information
@@ -176,7 +172,7 @@ export default function Company({ shopData }: ShopDashboardProps) {
             </div>
           </div>
 
-          {/* Marketplace Preferences */}
+          
           <div className="bg-white p-5 rounded-xl shadow-sm border border-gray-100">
             <h3 className="text-sm font-bold text-gray-900 flex items-center gap-2 mb-4 border-b pb-2">
               ⚙️ Marketplace Preferences
@@ -201,10 +197,10 @@ export default function Company({ shopData }: ShopDashboardProps) {
 
         </div>
 
-        {/* Right Side: Compliance State + Actions */}
+        
         <div className="space-y-4">
           
-          {/* Document Verification Agreements Matrix */}
+
           <div className="bg-white p-5 rounded-xl shadow-sm border border-gray-100 space-y-4">
             <h3 className="text-sm font-bold text-gray-900 border-b pb-2">Marketplace Agreement</h3>
             
@@ -223,7 +219,7 @@ export default function Company({ shopData }: ShopDashboardProps) {
               </div>
             </div>
 
-            {/* Explanatory Policy Note Box */}
+            
             <div className="p-3 bg-blue-50/50 rounded-xl border border-blue-100 text-[11px] text-blue-800 space-y-2 mt-4">
               <p className="font-bold flex items-center gap-1">🛡️ Payment Processing</p>
               <p className="leading-relaxed">
@@ -232,17 +228,17 @@ export default function Company({ shopData }: ShopDashboardProps) {
             </div>
           </div>
 
-          {/* Action Hub Management Console (CRITICAL PENDING VALIDATION CHECK) */}
+         
           <div className="space-y-2">
             
-            {/* Context Alert conditional if account is pending review */}
+           
             {isPending && (
               <div className="p-3 bg-amber-50 rounded-lg border border-amber-200 text-center text-xs font-semibold text-amber-800 mb-2">
                 🔒 System features are locked until admin verification completes.
               </div>
             )}
 
-            {/* Primary CTA: Add New Product */}
+           
             <button 
               disabled={isPending}
               className={`w-full py-2.5 rounded-xl text-xs font-bold shadow-sm transition-all flex items-center justify-between px-4 ${
@@ -255,7 +251,6 @@ export default function Company({ shopData }: ShopDashboardProps) {
               <span className="opacity-60">❯</span>
             </button>
 
-            {/* Secondary Option: View Products */}
             <button 
               disabled={isPending}
               className={`w-full py-2.5 rounded-xl text-xs font-bold border transition-all flex items-center justify-between px-4 ${
@@ -268,7 +263,7 @@ export default function Company({ shopData }: ShopDashboardProps) {
               <span className="text-gray-400">❯</span>
             </button>
 
-            {/* Tertiary Option: Analytics Dashboard */}
+           
             <button 
               disabled={isPending}
               className={`w-full py-2.5 rounded-xl text-xs font-bold border transition-all flex items-center justify-between px-4 ${
