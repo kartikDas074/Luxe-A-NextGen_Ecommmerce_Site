@@ -74,7 +74,8 @@ export default function SidebarComponent({ user }: SidebarComponentProps) {
         return [
           { name: "Dashboard", path: "/dashboard/seller", icon: LayoutDashboard },
           { name: "My Shop", path: "/dashboard/seller/shop", icon: Store },
-          { name: "Products", path: "/dashboard/seller/products", icon: Box },
+          { name: "Manage Products", path: "/dashboard/seller/products", icon: Box },
+          { name: "Add Product", path: "/dashboard/seller/addproduct", icon: Store },
           { name: "Inventory", path: "/dashboard/seller/inventory", icon: ClipboardList },
           { name: "Orders", path: "/dashboard/seller/orders", icon: ShoppingBag },
           { name: "Analytics", path: "/dashboard/seller/analytics", icon: BarChart3 },

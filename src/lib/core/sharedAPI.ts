@@ -28,3 +28,10 @@ export const patchMethod=async(path:string,data:any)=>{
 
     return await result.json();
 }
+
+export const deleteProMethod=async(path:string)=>{
+    const result=await fetch(`${process.env.SERVER_URL}${path}`,{
+        method:'DELETE'
+    });
+    return result.json();
+}
