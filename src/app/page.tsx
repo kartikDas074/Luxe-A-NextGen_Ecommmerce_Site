@@ -1,6 +1,10 @@
 import Hero from "@/components/Banner";
+import Bestsellers from "@/components/Bestsellers";
+import CustomerReviews from "@/components/CustomerReview";
 import FeaturedProducts from "@/components/Feature";
+import InfoSections from "@/components/InfoSection";
 import PromoGlassSection from "@/components/Promoglass";
+import WhyShopLuxe from "@/components/WhoShop";
 import Image from "next/image";
 
 export default function Home() {
@@ -9,6 +13,10 @@ export default function Home() {
     <Hero></Hero>
     <FeaturedProducts></FeaturedProducts>
     <PromoGlassSection></PromoGlassSection>
+    <Bestsellers></Bestsellers>
+    <WhyShopLuxe></WhyShopLuxe>
+    <CustomerReviews></CustomerReviews>
+    <InfoSections></InfoSections>
     </div>
   );
 }
