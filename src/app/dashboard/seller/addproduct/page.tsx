@@ -213,7 +213,7 @@ export default function AddProductForm() {
 
     const payload = {
       ...formData,
-      sellerId:user.id,
+      sellerId:user?.id||"",
       createdAt: new Date().toISOString(),
       updatedAt: new Date().toISOString()
     };
