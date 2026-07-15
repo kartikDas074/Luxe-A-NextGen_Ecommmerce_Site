@@ -40,7 +40,7 @@ export default function Navbar() {
 
   const { data: session } = authClient.useSession();
   const user = session?.user as CustomUser | undefined;
-  
+  console.log(user);
   
   const userRole = user?.role || "seller"; 
 
