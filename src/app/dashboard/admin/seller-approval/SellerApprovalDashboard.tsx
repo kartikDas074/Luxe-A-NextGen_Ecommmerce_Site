@@ -73,14 +73,20 @@ export default function SellerApprovalDashboard({ initialCompanies }: Props) {
         toast.success('you successfully Update the company status');
         if(newStatus==='approved'){
             if(!user)redirect('/unauthorized');
-            const resulto=await roleUpdata(id,'seller');
+            const resulto=await roleUpdata(selectedCompany?.userId||"",'seller');
             if(resulto.success){
                 toast.success('This user successfully become a seller');
             }else{
                 toast.error('For some reason users role cannot be updated.. Try again Later..');
             }
         }else if(newStatus==='rejected'){
-           toast.success('This user shop is rejected');
+           if(!user)redirect('/unauthorized');
+            const resulto=await roleUpdata(selectedCompany?.userId||"",'customer');
+            if(resulto.success){
+                toast.success('This user successfully become a Customer');
+            }else{
+                toast.error('For some reason users role cannot be updated.. Try again Later..');
+            }
         }else{
            toast.error('For some reason users role cannot be updated.. Try again Later..');
         }
@@ -105,9 +111,9 @@ export default function SellerApprovalDashboard({ initialCompanies }: Props) {
         </button>
       </div>
 
-      {/* Grid Stats matching design exactly */}
+     
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
-        {/* Pending Card */}
+  
         <div className="bg-white p-6 rounded-2xl border shadow-sm flex justify-between items-start">
           <div className="space-y-2">
             <span className="text-[11px] font-black tracking-wider text-gray-400 uppercase">Pending Apps</span>
@@ -118,7 +124,7 @@ export default function SellerApprovalDashboard({ initialCompanies }: Props) {
           </div>
         </div>
 
-        {/* Approved Card */}
+      
         <div className="bg-white p-6 rounded-2xl border shadow-sm flex justify-between items-start">
           <div className="space-y-2">
             <span className="text-[11px] font-black tracking-wider text-gray-400 uppercase">Approved Sellers</span>
@@ -129,7 +135,7 @@ export default function SellerApprovalDashboard({ initialCompanies }: Props) {
           </div>
         </div>
 
-        {/* Rejected Card */}
+       
         <div className="bg-white p-6 rounded-2xl border shadow-sm flex justify-between items-start">
           <div className="space-y-2">
             <span className="text-[11px] font-black tracking-wider text-gray-400 uppercase">Rejected</span>
@@ -140,7 +146,7 @@ export default function SellerApprovalDashboard({ initialCompanies }: Props) {
           </div>
         </div>
 
-        {/* Total Card */}
+      
         <div className="bg-white p-6 rounded-2xl border shadow-sm flex justify-between items-start">
           <div className="space-y-2">
             <span className="text-[11px] font-black tracking-wider text-gray-400 uppercase">Total Ecosystem</span>
@@ -152,7 +158,7 @@ export default function SellerApprovalDashboard({ initialCompanies }: Props) {
         </div>
       </div>
 
-      {/* Real-time search filters block matching image control design */}
+     
       <div className="bg-white p-4 rounded-xl border shadow-sm flex flex-col md:flex-row gap-3 items-center justify-between">
         <div className="relative w-full md:max-w-md">
           <Search className="w-4 h-4 text-gray-400 absolute left-3 top-1/2 -translate-y-1/2" />
@@ -183,7 +189,7 @@ export default function SellerApprovalDashboard({ initialCompanies }: Props) {
         </div>
       </div>
 
-      {/* Main Table Setup rendering actual fetched data */}
+     
       <div className="bg-white rounded-xl border shadow-sm overflow-hidden">
         <div className="overflow-x-auto">
           <table className="w-full text-left border-collapse">
@@ -204,7 +210,7 @@ export default function SellerApprovalDashboard({ initialCompanies }: Props) {
                   
                   return (
                     <tr key={companyId} className="hover:bg-gray-50/50 transition">
-                      {/* Shop Branding block */}
+                 
                       <td className="py-4 px-6">
                         <div className="flex items-center gap-3">
                           <img
@@ -225,7 +231,7 @@ export default function SellerApprovalDashboard({ initialCompanies }: Props) {
                       <td className="py-4 px-6 text-sm text-gray-500 break-all">{company.businessEmail}</td>
                       <td className="py-4 px-6 text-sm text-gray-500">{company.country}</td>
                       
-                      {/* Interactive pill status badge */}
+                      
                       <td className="py-4 px-6">
                         <span className={`inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-xs font-black uppercase tracking-wider ${
                           company.status === "approved"
@@ -241,7 +247,7 @@ export default function SellerApprovalDashboard({ initialCompanies }: Props) {
                         </span>
                       </td>
 
-                      {/* Detail View + Action buttons row */}
+                    
                       <td className="py-4 px-6 text-right">
                         <div className="flex items-center justify-end gap-2">
                           <button
@@ -267,12 +273,12 @@ export default function SellerApprovalDashboard({ initialCompanies }: Props) {
         </div>
       </div>
 
-      {/* Confirmation & Details Modal Backdrop */}
+     
       {selectedCompany && (
         <div className="fixed inset-0 z-50 bg-black/60 backdrop-blur-sm flex items-center justify-center p-4">
           <div className="bg-white rounded-2xl max-w-2xl w-full shadow-2xl overflow-hidden animate-fade-in">
             
-            {/* Shop Banner preview overlay on Modal top */}
+        
             <div className="h-36 bg-slate-900 relative">
               {selectedCompany.shopBanner ? (
                 <img src={selectedCompany.shopBanner} alt="banner" className="w-full h-full object-cover opacity-80" />
@@ -302,7 +308,7 @@ export default function SellerApprovalDashboard({ initialCompanies }: Props) {
             </div>
 
             <div className="p-6 space-y-6 max-h-[65vh] overflow-y-auto">
-              {/* About description */}
+            
               <div>
                 <h4 className="text-[10px] font-black uppercase text-gray-400 tracking-wider mb-1">Description</h4>
                 <p className="text-sm text-gray-700 bg-gray-50 p-3 rounded-xl border leading-relaxed">
@@ -310,7 +316,7 @@ export default function SellerApprovalDashboard({ initialCompanies }: Props) {
                 </p>
               </div>
 
-              {/* Owner and details grid */}
+             
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 <div>
                   <h4 className="text-[10px] font-black uppercase text-gray-400 tracking-wider mb-2">Owner Information</h4>
@@ -338,14 +344,14 @@ export default function SellerApprovalDashboard({ initialCompanies }: Props) {
 
               <hr className="border-gray-100" />
 
-              {/* Terms Checkbox Confirmations */}
+             
               <div className="flex gap-4 text-xs font-bold text-gray-600 bg-amber-50/50 p-3 rounded-lg border border-amber-100/50">
                 <p>Currency: <span className="text-black font-normal">{selectedCompany.preferredCurrency}</span></p>
                 <p>Stripe Setup: <span className="text-emerald-600">Active ✓</span></p>
                 <p>Status: <span className="uppercase text-amber-700">{selectedCompany.status}</span></p>
               </div>
 
-              {/* Interactive confirmation nested view */}
+              
               {modalActionType ? (
                 <div className="bg-gray-50 p-4 rounded-xl border border-gray-200 animate-fade-in space-y-3">
                   <p className="text-sm font-bold text-gray-900">
@@ -378,7 +384,7 @@ export default function SellerApprovalDashboard({ initialCompanies }: Props) {
               ) : null}
             </div>
 
-            {/* Footer action controls */}
+           
             {!modalActionType && (
               <div className="bg-gray-50 p-4 px-6 border-t flex justify-between gap-2">
                 <button
@@ -411,7 +417,7 @@ export default function SellerApprovalDashboard({ initialCompanies }: Props) {
   );
 }
 
-// Inline fallback for layout UI
+
 function UserIcon(props: React.SVGProps<SVGSVGElement>) {
   return (
     <svg
