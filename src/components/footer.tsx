@@ -10,7 +10,7 @@ const Footer = () => {
           <footer className="bg-gray-900 text-gray-400 text-xs border-t border-gray-800 pt-16 pb-8 px-4 sm:px-6 lg:px-8">
         <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-12 gap-10 pb-12 border-b border-gray-800">
           
-          {/* Brand Vector Column */}
+       
           <div className="md:col-span-4 space-y-4 text-left">
             <div className="text-white font-black text-xl tracking-widest">LUXE.</div>
             <p className="text-gray-500 font-medium leading-relaxed max-w-sm">
@@ -24,7 +24,7 @@ const Footer = () => {
             </div>
           </div>
 
-          {/* Quick Links Matrix */}
+      
           <div className="md:col-span-2 text-left space-y-3">
             <h5 className="text-white font-black uppercase tracking-wider text-[10px]">Company</h5>
             <ul className="space-y-2 font-bold">
@@ -53,7 +53,7 @@ const Footer = () => {
             </ul>
           </div>
 
-          {/* Newsletter Segment */}
+        
           <div className="md:col-span-2 text-left space-y-3">
             <h5 className="text-white font-black uppercase tracking-wider text-[10px]">Newsletter</h5>
             <p className="text-gray-500 font-medium leading-relaxed">Subscribe to target optimization notifications.</p>
@@ -71,7 +71,7 @@ const Footer = () => {
 
         </div>
 
-        {/* Legal Node */}
+       
         <div className="max-w-7xl mx-auto pt-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-gray-600 font-bold text-[11px]">
           <div>© {new Date().getFullYear()} LUXE Inc. All system tracking data reserved.</div>
           <div className="flex gap-4">

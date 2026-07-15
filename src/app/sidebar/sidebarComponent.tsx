@@ -64,10 +64,10 @@ export default function SidebarComponent({ user }: SidebarComponentProps) {
       case "admin":
         return [
           { name: "Dashboard", path: "/dashboard/admin", icon: LayoutDashboard },
-          { name: "User Management", path: "/dashboard/admin/users", icon: Users },
+          //{ name: "User Management", path: "/dashboard/admin/users", icon: Users },
           { name: "Seller Approval", path: "/dashboard/admin/seller-approval", icon: ShieldCheck },
-          { name: "Product Management", path: "/dashboard/admin/products", icon: Box },
-          { name: "Reports", path: "/dashboard/admin/reports", icon: BarChart3 },
+          //{ name: "Product Management", path: "/dashboard/admin/products", icon: Box },
+          //{ name: "Reports", path: "/dashboard/admin/reports", icon: BarChart3 },
           { name: "My Profile", path: "/dashboard/admin/profile", icon: User },
         ];
       case "seller":
@@ -76,9 +76,9 @@ export default function SidebarComponent({ user }: SidebarComponentProps) {
           { name: "My Shop", path: "/dashboard/seller/shop", icon: Store },
           { name: "Manage Products", path: "/dashboard/seller/products", icon: Box },
           { name: "Add Product", path: "/dashboard/seller/addproduct", icon: Store },
-          { name: "Inventory", path: "/dashboard/seller/inventory", icon: ClipboardList },
+          //{ name: "Inventory", path: "/dashboard/seller/inventory", icon: ClipboardList },
           { name: "Orders", path: "/dashboard/seller/orders", icon: ShoppingBag },
-          { name: "Analytics", path: "/dashboard/seller/analytics", icon: BarChart3 },
+          //{ name: "Analytics", path: "/dashboard/seller/analytics", icon: BarChart3 },
           { name: "My Profile", path: "/dashboard/seller/profile", icon: User },
         ];
       case "customer":
@@ -86,11 +86,11 @@ export default function SidebarComponent({ user }: SidebarComponentProps) {
         return [
           { name: "Dashboard", path: "/dashboard/customer", icon: LayoutDashboard },
           { name: "Profile", path: "/dashboard/customer/profile", icon: User },
-          { name: "Address Book", path: "/dashboard/customer/address-book", icon: MapPin },
-          { name: "Wishlist", path: "/dashboard/customer/wishlist", icon: Heart },
-          { name: "Checkout", path: "/dashboard/customer/checkout", icon: ShoppingBag },
+          // { name: "Address Book", path: "/dashboard/customer/address-book", icon: MapPin },
+          // { name: "Wishlist", path: "/dashboard/customer/wishlist", icon: Heart },
+          // { name: "Checkout", path: "/dashboard/customer/checkout", icon: ShoppingBag },
           { name: "My Orders", path: "/dashboard/customer/orders", icon: ClipboardList },
-          { name: "Settings", path: "/dashboard/customer/settings", icon: Settings },
+          //{ name: "Settings", path: "/dashboard/customer/settings", icon: Settings },
         ];
     }
   };
