@@ -163,7 +163,7 @@ export default function Navbar() {
 
            
             {user && (
-              <div ref={workspaceRef} className="relative py-1">
+              <div ref={workspaceRef} className={`relative py-1 ${user.role=='admin'?'hidden':'flex'}` }>
                 <button 
                   onClick={() => { setIsWorkspaceOpen(!isWorkspaceOpen); setIsAboutOpen(false); }}
                   className="flex items-center gap-1 font-bold cursor-pointer hover:text-neutral-950 focus:outline-none"
