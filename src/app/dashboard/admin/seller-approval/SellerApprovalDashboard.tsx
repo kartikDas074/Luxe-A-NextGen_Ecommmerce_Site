@@ -36,7 +36,7 @@ export default function SellerApprovalDashboard({ initialCompanies }: Props) {
   const [selectedCompany, setSelectedCompany] = useState<CompanyType | null>(null);
   const [modalActionType, setModalActionType] = useState<"approved" | "rejected" | null>(null);
 
-  // Dynamic calculations for the Stat Cards
+ 
   const stats = useMemo(() => {
     const total = companies.length;
     const pending = companies.filter((c) => c.status === "pending").length;
@@ -45,7 +45,7 @@ export default function SellerApprovalDashboard({ initialCompanies }: Props) {
     return { total, pending, approved, rejected };
   }, [companies]);
 
-  // Handle live filtering
+
   const filteredCompanies = useMemo(() => {
     return companies.filter((company) => {
       const matchesSearch =
@@ -61,7 +61,6 @@ export default function SellerApprovalDashboard({ initialCompanies }: Props) {
     });
   }, [companies, searchQuery, statusFilter]);
 
-  // Action status updater (Simulating server save)
   const updateStatus = async (id: string, newStatus: "approved" | "rejected") => {
     setCompanies((prev) =>
       prev.map((c) => {
@@ -72,14 +71,18 @@ export default function SellerApprovalDashboard({ initialCompanies }: Props) {
     const result=await CompnayStatus(id,newStatus);
     if(result.success){
         toast.success('you successfully Update the company status');
-        if(newStatus=='approved'){
+        if(newStatus==='approved'){
             if(!user)redirect('/unauthorized');
-            const result=await roleUpdata(user.id,'seller');
-            if(result.success){
-                
+            const resulto=await roleUpdata(id,'seller');
+            if(resulto.success){
+                toast.success('This user successfully become a seller');
             }else{
                 toast.error('For some reason users role cannot be updated.. Try again Later..');
             }
+        }else if(newStatus==='rejected'){
+           toast.success('This user shop is rejected');
+        }else{
+           toast.error('For some reason users role cannot be updated.. Try again Later..');
         }
     }else{
         toast.error('Something Went Wrong Plz try again later');
