@@ -30,10 +30,10 @@ export default function Hero() {
 
   return (
     <section className="w-full bg-white">
-      {/* Main Hero Container */}
+     
       <div className="mx-auto max-w-7xl px-4 pt-12 pb-16 sm:px-8 md:pt-20 md:pb-24 flex flex-col md:flex-row items-center justify-between gap-12">
         
-        {/* Left: Content Text */}
+       
         <div className="flex-1 max-w-xl text-left order-2 md:order-1">
           <span className="inline-block rounded-full bg-neutral-100 px-4 py-1.5 text-[11px] font-bold tracking-widest text-neutral-600 uppercase mb-4 sm:mb-6">
             Summer 2026 Collection
@@ -58,7 +58,7 @@ export default function Hero() {
           </div>
         </div>
 
-        {/* Right: Premium Image Banner */}
+        
         <div className="flex-1 w-full order-1 md:order-2 flex justify-center md:justify-end">
           <div className="relative w-full max-w-md md:max-w-xl aspect-16/11 rounded-3xl overflow-hidden shadow-2xl bg-neutral-50 border border-neutral-100">
             <img
@@ -70,7 +70,7 @@ export default function Hero() {
         </div>
       </div>
 
-      {/* Bottom Feature Grid Bar */}
+      
       <div className="w-full border-t border-neutral-100 bg-neutral-50/50 py-8 md:py-10">
         <div className="mx-auto max-w-7xl px-4 sm:px-8">
           <div className="grid grid-cols-2 lg:grid-cols-4 gap-y-8 gap-x-4 md:gap-6">
