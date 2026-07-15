@@ -251,24 +251,7 @@ export default function RegisterPage() {
           </button>
         </form>
 
-        <div className="relative flex py-2 items-center text-neutral-400">
-          <div className="flex-grow border-t border-neutral-200"></div>
-          <span className="flex-shrink mx-4 text-[10px] font-bold uppercase tracking-widest text-neutral-400">Or Continue With</span>
-          <div className="flex-grow border-t border-neutral-200"></div>
-        </div>
-
-        <button
-          type="button"
-          className="w-full flex items-center justify-center gap-3 border border-neutral-200 bg-white rounded-xl py-3 text-sm font-bold text-neutral-700 transition-all hover:bg-neutral-50 hover:border-neutral-300 active:scale-[0.99]"
-        >
-          <svg className="h-5 w-5" viewBox="0 0 24 24">
-            <path
-              fill="#EA4335"
-              d="M12.24 10.285V14.4h6.887c-.648 2.41-2.519 4.114-5.136 4.114-3.555 0-6.433-2.878-6.433-6.433 0-3.556 2.878-6.433 6.433-6.433 1.483 0 2.844.504 3.928 1.346l3.057-3.057C18.23 1.439 15.42 0 12.24 0 5.48 0 0 5.48 0 12.24s5.48 12.24 12.24 12.24c6.8 0 12.24-5.44 12.24-12.24 0-.768-.077-1.507-.22-2.215H12.24z"
-            />
-          </svg>
-          Google Sign Up
-        </button>
+        
 
         <div className="text-center text-xs font-semibold text-neutral-500">
           Already have an account?{" "}
