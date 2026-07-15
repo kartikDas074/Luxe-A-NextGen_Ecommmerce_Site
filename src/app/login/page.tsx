@@ -23,6 +23,7 @@ export default function LoginPage() {
         password:password
     });
     if(data){
+        window.location.href = "/";
         toast.success("Logged in successfully!");
     }else{
         toast.error('Try Again Later.')

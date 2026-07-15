@@ -93,6 +93,7 @@ export default function RegisterPage() {
         image:avatar,
     }) 
    if(data){
+    window.location.href = "/";
     toast.success('You are welcome TO LUXE');
    }else{
     toast.error(`Plz Cheak ${error}`);
